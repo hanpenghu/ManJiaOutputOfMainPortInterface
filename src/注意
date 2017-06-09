@@ -1,0 +1,21 @@
+subPortToken.json
+的[]前后不能添加任何字符
+否则拦截器会通不过报错
+如果要增加子站项目,请在
+复制一个
+,{}
+然后在{}内部改动相应的内容即可
+--------------------------------------------------------
+
+md5验证规则是
+md5(method+时间戳+key+secret)
+---------------------------------------------------------
+
+post参数有2个:(secret不暴露,随md5一起走)
+1、key=key(是没有加密的暴露型参数,直接通过post传入拦截器,然后拦截器通过这个key找到secret再次验证)
+2、validate=md5(method+时间戳+key+secret)        MD5Utils.generatePassword(requestMethod+formatDate+key+secret);
+   上面的method其实就是请求地址的最后一个方法名字,拦截器通过request.get---得到
+   时间戳的格式 String formatDate=new SimpleDateFormat("yyyy_MM_dd").format(new Date());
+---------------------------------------------------------------------------
+验证子站的配置文件subPortToken.json
+为每次请求都单独读取一次,为的是在不停止服务的情况下可以添加其它子站
