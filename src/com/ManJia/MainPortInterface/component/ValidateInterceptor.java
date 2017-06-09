@@ -19,7 +19,7 @@ import java.util.Date;
 /**
  * Created by Administrator on 2017/6/9.
  */
-public class ValidateInterceptor implements HandlerInterceptor {
+public class ValidateInterceptor implements HandlerInterceptor {//
     protected Logger log= LogManager.getLogger(this.getClass().getName());
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object o)  {
