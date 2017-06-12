@@ -1,11 +1,11 @@
 ---注意,在母站的商品表中的guid和商品规格表中的guid是对应相等的,但是他们跟分类表中的guid是不等的
-
+--原来同步中粮是先同步完商品表再同步规格表,这边主站对子站也不例外
 ----满嘉主站修改,商品表,规格表,分类表,增加2个字段,TenantID代表那个站点的
 ----guid代表该商品全球唯一标识
 --修改分类表
-alter table Hishop_Categories add TenantID int default 0
+alter table Hishop_Categories add TenantID int default 0-----母站设为0---子站不能设为0,设为其他
 go
-alter table Hishop_Categories add guid varchar(40) default NEWID()
+alter table Hishop_Categories add guid varchar(40) default NEWID()----字母都这样做
 go
 ----初始化上面加的2个字段的值
 update Hishop_Categories set TenantID=0---此为满嘉主站代号,设为0(0代表满嘉主站)
@@ -50,3 +50,15 @@ go
 EXECUTE make_Hishop_SKUs_Hishop_Products_have_same_guid
 go
 ------------------------------------------------------------------------------------------------
+---创建触发器,当规格表中增加一条数据的时候,对规格表中的TenantID(站点区分字段)和guid自动赋值
+----主站点tenantID(站点区分字段) 为0,guid(商品全球唯一标识)必须跟商品表保持一致,(该触发器主要是为了吧原来的规格表中的guid替换成商品表的guid)
+Create Trigger insert_guid_from_Hishop_Products_to_Hishop_SKUs
+On Hishop_SKUs
+after insert
+As
+declare @ProductId int
+Select @ProductId=ProductId from inserted
+begin
+     update Hishop_SKUs set guid=(select guid FROM Hishop_Products where ProductId=@ProductId)where ProductId=@ProductId
+end
+

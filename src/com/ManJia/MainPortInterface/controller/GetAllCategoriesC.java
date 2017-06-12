@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * Created by Administrator on 2017/6/8.
  */
+
 @RestController
 @RequestMapping("category")
 public class GetAllCategoriesC{

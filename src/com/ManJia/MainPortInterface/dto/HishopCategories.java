@@ -33,6 +33,10 @@ public class HishopCategories {
 
     private String bigimageurl;
 
+    private Integer tenantid;
+
+    private String guid;
+
     public Integer getCategoryid() {
         return categoryid;
     }
@@ -161,26 +165,19 @@ public class HishopCategories {
         this.bigimageurl = bigimageurl == null ? null : bigimageurl.trim();
     }
 
-    @Override
-    public String toString() {
-        final StringBuffer sb = new StringBuffer("HishopCategories{");
-        sb.append("categoryid=").append(categoryid);
-        sb.append(", name='").append(name).append('\'');
-        sb.append(", displaysequence=").append(displaysequence);
-        sb.append(", metaTitle='").append(metaTitle).append('\'');
-        sb.append(", metaDescription='").append(metaDescription).append('\'');
-        sb.append(", metaKeywords='").append(metaKeywords).append('\'');
-        sb.append(", parentcategoryid=").append(parentcategoryid);
-        sb.append(", depth=").append(depth);
-        sb.append(", path='").append(path).append('\'');
-        sb.append(", rewritename='").append(rewritename).append('\'');
-        sb.append(", skuprefix='").append(skuprefix).append('\'');
-        sb.append(", associatedproducttype=").append(associatedproducttype);
-        sb.append(", theme='").append(theme).append('\'');
-        sb.append(", haschildren=").append(haschildren);
-        sb.append(", icon='").append(icon).append('\'');
-        sb.append(", bigimageurl='").append(bigimageurl).append('\'');
-        sb.append('}');
-        return sb.toString();
+    public Integer getTenantid() {
+        return tenantid;
+    }
+
+    public void setTenantid(Integer tenantid) {
+        this.tenantid = tenantid;
+    }
+
+    public String getGuid() {
+        return guid;
+    }
+
+    public void setGuid(String guid) {
+        this.guid = guid == null ? null : guid.trim();
     }
 }

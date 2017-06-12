@@ -1163,6 +1163,136 @@ public class HishopCategoriesExample {
             addCriterion("BigImageUrl not between", value1, value2, "bigimageurl");
             return (Criteria) this;
         }
+
+        public Criteria andTenantidIsNull() {
+            addCriterion("TenantID is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTenantidIsNotNull() {
+            addCriterion("TenantID is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTenantidEqualTo(Integer value) {
+            addCriterion("TenantID =", value, "tenantid");
+            return (Criteria) this;
+        }
+
+        public Criteria andTenantidNotEqualTo(Integer value) {
+            addCriterion("TenantID <>", value, "tenantid");
+            return (Criteria) this;
+        }
+
+        public Criteria andTenantidGreaterThan(Integer value) {
+            addCriterion("TenantID >", value, "tenantid");
+            return (Criteria) this;
+        }
+
+        public Criteria andTenantidGreaterThanOrEqualTo(Integer value) {
+            addCriterion("TenantID >=", value, "tenantid");
+            return (Criteria) this;
+        }
+
+        public Criteria andTenantidLessThan(Integer value) {
+            addCriterion("TenantID <", value, "tenantid");
+            return (Criteria) this;
+        }
+
+        public Criteria andTenantidLessThanOrEqualTo(Integer value) {
+            addCriterion("TenantID <=", value, "tenantid");
+            return (Criteria) this;
+        }
+
+        public Criteria andTenantidIn(List<Integer> values) {
+            addCriterion("TenantID in", values, "tenantid");
+            return (Criteria) this;
+        }
+
+        public Criteria andTenantidNotIn(List<Integer> values) {
+            addCriterion("TenantID not in", values, "tenantid");
+            return (Criteria) this;
+        }
+
+        public Criteria andTenantidBetween(Integer value1, Integer value2) {
+            addCriterion("TenantID between", value1, value2, "tenantid");
+            return (Criteria) this;
+        }
+
+        public Criteria andTenantidNotBetween(Integer value1, Integer value2) {
+            addCriterion("TenantID not between", value1, value2, "tenantid");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuidIsNull() {
+            addCriterion("guid is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuidIsNotNull() {
+            addCriterion("guid is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuidEqualTo(String value) {
+            addCriterion("guid =", value, "guid");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuidNotEqualTo(String value) {
+            addCriterion("guid <>", value, "guid");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuidGreaterThan(String value) {
+            addCriterion("guid >", value, "guid");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuidGreaterThanOrEqualTo(String value) {
+            addCriterion("guid >=", value, "guid");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuidLessThan(String value) {
+            addCriterion("guid <", value, "guid");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuidLessThanOrEqualTo(String value) {
+            addCriterion("guid <=", value, "guid");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuidLike(String value) {
+            addCriterion("guid like", value, "guid");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuidNotLike(String value) {
+            addCriterion("guid not like", value, "guid");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuidIn(List<String> values) {
+            addCriterion("guid in", values, "guid");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuidNotIn(List<String> values) {
+            addCriterion("guid not in", values, "guid");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuidBetween(String value1, String value2) {
+            addCriterion("guid between", value1, value2, "guid");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuidNotBetween(String value1, String value2) {
+            addCriterion("guid not between", value1, value2, "guid");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

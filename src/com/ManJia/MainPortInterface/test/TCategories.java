@@ -19,7 +19,8 @@ import java.util.List;
 /**
  * Created by Administrator on 2017/6/8.
  */
-/*
+
+
 @Component
 public class TCategories {
     @Autowired
@@ -30,18 +31,18 @@ public class TCategories {
     }
 
     public static void main(String[]args){
-        */
-/*String []configs={"classpath*:applicationContext.xml"};
+
+        /*String []configs={"classpath*:applicationContext.xml"};
         ApplicationContext ctx = new ClassPathXmlApplicationContext(configs);
         System.out.println(ctx+"---------------------");
         TCategories tCategories = SpringUtil.getBean(TCategories.class);
-        tCategories.f();*//*
+        tCategories.f();*/
 
-        String requestMethod="getAllCategory";
+       /* String requestMethod="getAllCategory";
         String formatDate=new SimpleDateFormat("yyyy_MM_dd").format(new Date());
         System.out.println(formatDate);
-        //00ecb4b0ae54b9c7f8470b35ba54094e
-            System.out.println(MD5Utils.generatePassword(requestMethod+formatDate+"key1"+"secret1"));
+        //dcb2a5cf74d49c2fa11d225d033628b4
+            System.out.println(MD5Utils.generatePassword(requestMethod+formatDate+"key1"+"secret1"));*/
+
     }
 }
-*/

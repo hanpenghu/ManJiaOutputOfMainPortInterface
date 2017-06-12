@@ -50,5 +50,4 @@ public class HishopCategoriesWithBLOBs extends HishopCategories {
     public void setNotes5(String notes5) {
         this.notes5 = notes5 == null ? null : notes5.trim();
     }
-
 }

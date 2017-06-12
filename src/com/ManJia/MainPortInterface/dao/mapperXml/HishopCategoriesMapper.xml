@@ -18,6 +18,8 @@
     <result column="HasChildren" jdbcType="BIT" property="haschildren" />
     <result column="Icon" jdbcType="VARCHAR" property="icon" />
     <result column="BigImageUrl" jdbcType="VARCHAR" property="bigimageurl" />
+    <result column="TenantID" jdbcType="INTEGER" property="tenantid" />
+    <result column="guid" jdbcType="VARCHAR" property="guid" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ManJia.MainPortInterface.dto.HishopCategoriesWithBLOBs">
     <result column="Notes1" jdbcType="LONGVARCHAR" property="notes1" />
@@ -85,9 +87,9 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    CategoryId, Name, DisplaySequence, Meta_Title, Meta_Description, Meta_Keywords, ParentCategoryId,
-    Depth, Path, RewriteName, SKUPrefix, AssociatedProductType, Theme, HasChildren, Icon,
-    BigImageUrl
+    CategoryId, Name, DisplaySequence, Meta_Title, Meta_Description, Meta_Keywords, ParentCategoryId, 
+    Depth, Path, RewriteName, SKUPrefix, AssociatedProductType, Theme, HasChildren, Icon, 
+    BigImageUrl, TenantID, guid
   </sql>
   <sql id="Blob_Column_List">
     Notes1, Notes2, Notes3, Notes4, Notes5
@@ -123,7 +125,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
-    select
+    select 
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
@@ -141,22 +143,22 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.ManJia.MainPortInterface.dto.HishopCategoriesWithBLOBs">
-    insert into Hishop_Categories (CategoryId, Name, DisplaySequence,
-      Meta_Title, Meta_Description, Meta_Keywords,
-      ParentCategoryId, Depth, Path,
-      RewriteName, SKUPrefix, AssociatedProductType,
-      Theme, HasChildren, Icon,
-      BigImageUrl, Notes1, Notes2,
-      Notes3, Notes4, Notes5
-      )
-    values (#{categoryid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{displaysequence,jdbcType=INTEGER},
-      #{metaTitle,jdbcType=VARCHAR}, #{metaDescription,jdbcType=VARCHAR}, #{metaKeywords,jdbcType=VARCHAR},
-      #{parentcategoryid,jdbcType=INTEGER}, #{depth,jdbcType=INTEGER}, #{path,jdbcType=VARCHAR},
-      #{rewritename,jdbcType=VARCHAR}, #{skuprefix,jdbcType=VARCHAR}, #{associatedproducttype,jdbcType=INTEGER},
-      #{theme,jdbcType=VARCHAR}, #{haschildren,jdbcType=BIT}, #{icon,jdbcType=VARCHAR},
-      #{bigimageurl,jdbcType=VARCHAR}, #{notes1,jdbcType=LONGVARCHAR}, #{notes2,jdbcType=LONGVARCHAR},
-      #{notes3,jdbcType=LONGVARCHAR}, #{notes4,jdbcType=LONGVARCHAR}, #{notes5,jdbcType=LONGVARCHAR}
-      )
+    insert into Hishop_Categories (CategoryId, Name, DisplaySequence, 
+      Meta_Title, Meta_Description, Meta_Keywords, 
+      ParentCategoryId, Depth, Path, 
+      RewriteName, SKUPrefix, AssociatedProductType, 
+      Theme, HasChildren, Icon, 
+      BigImageUrl, TenantID, guid, 
+      Notes1, Notes2, Notes3, 
+      Notes4, Notes5)
+    values (#{categoryid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{displaysequence,jdbcType=INTEGER}, 
+      #{metaTitle,jdbcType=VARCHAR}, #{metaDescription,jdbcType=VARCHAR}, #{metaKeywords,jdbcType=VARCHAR}, 
+      #{parentcategoryid,jdbcType=INTEGER}, #{depth,jdbcType=INTEGER}, #{path,jdbcType=VARCHAR}, 
+      #{rewritename,jdbcType=VARCHAR}, #{skuprefix,jdbcType=VARCHAR}, #{associatedproducttype,jdbcType=INTEGER}, 
+      #{theme,jdbcType=VARCHAR}, #{haschildren,jdbcType=BIT}, #{icon,jdbcType=VARCHAR}, 
+      #{bigimageurl,jdbcType=VARCHAR}, #{tenantid,jdbcType=INTEGER}, #{guid,jdbcType=VARCHAR}, 
+      #{notes1,jdbcType=LONGVARCHAR}, #{notes2,jdbcType=LONGVARCHAR}, #{notes3,jdbcType=LONGVARCHAR}, 
+      #{notes4,jdbcType=LONGVARCHAR}, #{notes5,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.ManJia.MainPortInterface.dto.HishopCategoriesWithBLOBs">
     insert into Hishop_Categories
@@ -208,6 +210,12 @@
       </if>
       <if test="bigimageurl != null">
         BigImageUrl,
+      </if>
+      <if test="tenantid != null">
+        TenantID,
+      </if>
+      <if test="guid != null">
+        guid,
       </if>
       <if test="notes1 != null">
         Notes1,
@@ -273,6 +281,12 @@
       </if>
       <if test="bigimageurl != null">
         #{bigimageurl,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantid != null">
+        #{tenantid,jdbcType=INTEGER},
+      </if>
+      <if test="guid != null">
+        #{guid,jdbcType=VARCHAR},
       </if>
       <if test="notes1 != null">
         #{notes1,jdbcType=LONGVARCHAR},
@@ -348,6 +362,12 @@
       <if test="record.bigimageurl != null">
         BigImageUrl = #{record.bigimageurl,jdbcType=VARCHAR},
       </if>
+      <if test="record.tenantid != null">
+        TenantID = #{record.tenantid,jdbcType=INTEGER},
+      </if>
+      <if test="record.guid != null">
+        guid = #{record.guid,jdbcType=VARCHAR},
+      </if>
       <if test="record.notes1 != null">
         Notes1 = #{record.notes1,jdbcType=LONGVARCHAR},
       </if>
@@ -386,6 +406,8 @@
       HasChildren = #{record.haschildren,jdbcType=BIT},
       Icon = #{record.icon,jdbcType=VARCHAR},
       BigImageUrl = #{record.bigimageurl,jdbcType=VARCHAR},
+      TenantID = #{record.tenantid,jdbcType=INTEGER},
+      guid = #{record.guid,jdbcType=VARCHAR},
       Notes1 = #{record.notes1,jdbcType=LONGVARCHAR},
       Notes2 = #{record.notes2,jdbcType=LONGVARCHAR},
       Notes3 = #{record.notes3,jdbcType=LONGVARCHAR},
@@ -412,7 +434,9 @@
       Theme = #{record.theme,jdbcType=VARCHAR},
       HasChildren = #{record.haschildren,jdbcType=BIT},
       Icon = #{record.icon,jdbcType=VARCHAR},
-      BigImageUrl = #{record.bigimageurl,jdbcType=VARCHAR}
+      BigImageUrl = #{record.bigimageurl,jdbcType=VARCHAR},
+      TenantID = #{record.tenantid,jdbcType=INTEGER},
+      guid = #{record.guid,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -465,6 +489,12 @@
       <if test="bigimageurl != null">
         BigImageUrl = #{bigimageurl,jdbcType=VARCHAR},
       </if>
+      <if test="tenantid != null">
+        TenantID = #{tenantid,jdbcType=INTEGER},
+      </if>
+      <if test="guid != null">
+        guid = #{guid,jdbcType=VARCHAR},
+      </if>
       <if test="notes1 != null">
         Notes1 = #{notes1,jdbcType=LONGVARCHAR},
       </if>
@@ -500,6 +530,8 @@
       HasChildren = #{haschildren,jdbcType=BIT},
       Icon = #{icon,jdbcType=VARCHAR},
       BigImageUrl = #{bigimageurl,jdbcType=VARCHAR},
+      TenantID = #{tenantid,jdbcType=INTEGER},
+      guid = #{guid,jdbcType=VARCHAR},
       Notes1 = #{notes1,jdbcType=LONGVARCHAR},
       Notes2 = #{notes2,jdbcType=LONGVARCHAR},
       Notes3 = #{notes3,jdbcType=LONGVARCHAR},
@@ -523,7 +555,9 @@
       Theme = #{theme,jdbcType=VARCHAR},
       HasChildren = #{haschildren,jdbcType=BIT},
       Icon = #{icon,jdbcType=VARCHAR},
-      BigImageUrl = #{bigimageurl,jdbcType=VARCHAR}
+      BigImageUrl = #{bigimageurl,jdbcType=VARCHAR},
+      TenantID = #{tenantid,jdbcType=INTEGER},
+      guid = #{guid,jdbcType=VARCHAR}
     where CategoryId = #{categoryid,jdbcType=INTEGER}
   </update>
 </mapper>
