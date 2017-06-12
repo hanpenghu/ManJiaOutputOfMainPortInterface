@@ -25,18 +25,22 @@ public class ValidateInterceptor implements HandlerInterceptor {//
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object o)  {
         log.info("===========HandlerInterceptor preHandle");
         String key = request.getParameter("key");
+        System.out.println(key);
         if(!NotEmpty.notEmpty(key)){
             return false;
         }
         String validate=request.getParameter("validate");
+        System.out.println(validate);
         if(!NotEmpty.notEmpty(validate)){
             return false;
         }
         String url = request.getRequestURI();
+
         if(!NotEmpty.notEmpty(url)){
             return false;
         }
         String requestMethod = url.substring(url.lastIndexOf("/") + 1);
+        System.out.println(requestMethod);
         String formatDate = new SimpleDateFormat("yyyy_MM_dd").format(new Date());
         String path = this.getClass().getResource("/").getPath();
         String json = ReadTxt.readAllTxt(path + "subPortToken.json");
@@ -45,9 +49,13 @@ public class ValidateInterceptor implements HandlerInterceptor {//
             for(Object ob:ja){
                 JSONObject jo=(JSONObject)ob;
                 if(NotEmpty.notEmpty(key)){//用户提供的key存在,此时再验证用户的md5
+
+
                     String secret = (String)jo.get(key);
+                    System.out.println(secret);
                     if(NotEmpty.notEmpty(secret)){
                        String validate1= MD5Utils.generatePassword(requestMethod+formatDate+key+secret);
+                       System.out.println(validate1);
                        if(NotEmpty.notEmpty(validate1)){
                            if(NotEmpty.notEmpty(validate)){
                                if(validate1.equals(validate)){
@@ -55,12 +63,14 @@ public class ValidateInterceptor implements HandlerInterceptor {//
                                }
                            }else{log.error("subPort give her mother's wrong md5!!!");}
                        }else{
-                           log.error("subPort give her mother's wrong md5!!!");
+                           log.error("mother's generate wrong md5!!!");
                        }
-                    }else{
-                        log.info("subPortToken.json has key have no secret! please check this txt!!");
-                        return false;
                     }
+
+
+
+
+
 
                 }else{
                     log.info("custom give the wrong key or  custom's key  not exsit!!");

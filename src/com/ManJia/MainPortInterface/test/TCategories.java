@@ -38,11 +38,12 @@ public class TCategories {
         TCategories tCategories = SpringUtil.getBean(TCategories.class);
         tCategories.f();*/
 
-       /* String requestMethod="getAllCategory";
+//       String requestMethod="getAllCategory";
+        String requestMethod="getAllGuidOfHishopProducts";//getAllGuidOfHishopProducts
         String formatDate=new SimpleDateFormat("yyyy_MM_dd").format(new Date());
         System.out.println(formatDate);
-        //dcb2a5cf74d49c2fa11d225d033628b4
-            System.out.println(MD5Utils.generatePassword(requestMethod+formatDate+"key1"+"secret1"));*/
+        //60ccf292c03c09ac115c2ac383a1d180
+            System.out.println(MD5Utils.generatePassword(requestMethod+formatDate+"key1"+"secret1"));
 
     }
 }
