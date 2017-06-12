@@ -1,4 +1,3 @@
-/*
 package com.ManJia.MainPortInterface.service;
 
 import com.ManJia.MainPortInterface.dao.mapperJava.HishopProductsMapper;
@@ -9,20 +8,18 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-*/
 /**
  * Created by Administrator on 2017/6/9.
- *//*
+ */
 
 @Service
-public class GetAllProductId {
+public class GetAllGuid {
     @Autowired
     HishopProductsMapper hishopProductsMapper;
 
-    public void getAllProductId(){
-
-
+    public List<String> getAllGuId(){
+        return hishopProductsMapper.getAllGuId();
     }
 
 }
-*/
+
