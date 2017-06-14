@@ -75,7 +75,8 @@
         
       	 <!--<table tableName="LXSKT"></table>-->
       <!--  <table tableName="Hishop_Categories"></table>-->
-        <table tableName="Hishop_Products"></table>
+        <!--<table tableName="Hishop_Products"></table>-->
+        <table tableName="Hishop_SKUs"></table>
         <!--<table tableName="salm"></table>
         <table tableName="my_wh"></table>-->
         <!--<table tableName="Spider_regionList"></table>
