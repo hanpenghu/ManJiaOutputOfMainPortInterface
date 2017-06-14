@@ -40,7 +40,8 @@ public class TCategories {
 
 //       String requestMethod="getAllCategory";
 //        String requestMethod="getAllGuidOfHishopProducts";//getAllGuidOfHishopProducts
-        String requestMethod="getSomeProducts";
+//        String requestMethod="getSomeProducts";
+        String requestMethod="getSomeSkus";
         String formatDate=new SimpleDateFormat("yyyy_MM_dd").format(new Date());
         System.out.println(formatDate);
         //60ccf292c03c09ac115c2ac383a1d180
