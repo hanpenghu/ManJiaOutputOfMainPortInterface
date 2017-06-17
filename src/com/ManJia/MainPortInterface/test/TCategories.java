@@ -41,10 +41,10 @@ public class TCategories {
 //       String requestMethod="getAllCategory";
 //        String requestMethod="getAllGuidOfHishopProducts";//getAllGuidOfHishopProducts
 //        String requestMethod="getSomeProducts";
-        String requestMethod="getSomeSkus";
+        String requestMethod="getAllCategory";
         String formatDate=new SimpleDateFormat("yyyy_MM_dd").format(new Date());
         System.out.println(formatDate);
-        //60ccf292c03c09ac115c2ac383a1d180
+        //fc78abcdb456034b3a62182106483cc7
             System.out.println(MD5Utils.generatePassword(requestMethod+formatDate+"key1"+"secret1"));
 
     }

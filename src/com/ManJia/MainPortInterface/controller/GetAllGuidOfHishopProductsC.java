@@ -19,24 +19,24 @@ public class GetAllGuidOfHishopProductsC {
     GetAllGuidOfHishopProducts getAllGuidOfHishopProducts;
     @Autowired
     GetSomeProducts getSomeProducts;
-    @RequestMapping(value ="getAllGuidOfHishopProducts",method = RequestMethod.POST,produces = {"text/html;charset=UTF-8"})
-    public String getAllGuidOfHishopProductsC(){
+
+    @RequestMapping(value = "getAllGuidOfHishopProducts", method = RequestMethod.POST, produces = {"text/html;charset=UTF-8"})
+    public String getAllGuidOfHishopProductsC() {
         String allGuIdOfJSONString = getAllGuidOfHishopProducts.getAllGuIdOfJSONString();
-        if(NotEmpty.notEmpty(allGuIdOfJSONString)){
+        if (NotEmpty.notEmpty(allGuIdOfJSONString)) {
             return allGuIdOfJSONString;
         }
         return "GetAllGuidOfHishopProducts.getAllGuIdOfJSONString() has get nothing from database";
     }
 
-    @RequestMapping(value ="getSomeProducts",method = RequestMethod.POST,produces = {"text/html;charset=UTF-8"})
-    public String getSomeProductsOfJsonArrayStrC(@Param("jsonArrayOfGuids") String jsonArrayOfGuids){
+    @RequestMapping(value = "getSomeProducts", method = RequestMethod.POST, produces = {"text/html;charset=UTF-8"})
+    public String getSomeProductsOfJsonArrayStrC(@Param("jsonArrayOfGuids") String jsonArrayOfGuids) {
         String someProducts = getSomeProducts.getSomeProducts(jsonArrayOfGuids);
-        if(NotEmpty.notEmpty(someProducts)){
+        if (NotEmpty.notEmpty(someProducts)) {
             return someProducts;
         }
         return "GetAllGuidOfHishopProducts.getSomeProductsOfJsonArrayStrC() has get nothing from database";
     }
-    
-    
-    
+
+
 }
